@@ -1,0 +1,6 @@
+framework module Pods_DhallApp {
+  umbrella header "Pods-DhallApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

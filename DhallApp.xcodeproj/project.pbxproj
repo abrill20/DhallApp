@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B81B098E2D26EF784CCD88CA /* Pods_DhallApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F47F65F4D3A1F5B8120A90 /* Pods_DhallApp.framework */; };
 		FF059C5923063D430064CA38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C5823063D430064CA38 /* AppDelegate.swift */; };
 		FF059C5B23063D430064CA38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C5A23063D430064CA38 /* ViewController.swift */; };
 		FF059C5E23063D430064CA38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF059C5C23063D430064CA38 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78F47F65F4D3A1F5B8120A90 /* Pods_DhallApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DhallApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C19A52EDCAC6035C9C3B03 /* Pods-DhallApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DhallApp.debug.xcconfig"; path = "Target Support Files/Pods-DhallApp/Pods-DhallApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F4D569AC53A85F8F10B9D0FD /* Pods-DhallApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DhallApp.release.xcconfig"; path = "Target Support Files/Pods-DhallApp/Pods-DhallApp.release.xcconfig"; sourceTree = "<group>"; };
 		FF059C5523063D430064CA38 /* DhallApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhallApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF059C5823063D430064CA38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF059C5A23063D430064CA38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81B098E2D26EF784CCD88CA /* Pods_DhallApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25C13F94CA8B903938750859 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78F47F65F4D3A1F5B8120A90 /* Pods_DhallApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		701F0DC27316E01F25D70EDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83C19A52EDCAC6035C9C3B03 /* Pods-DhallApp.debug.xcconfig */,
+				F4D569AC53A85F8F10B9D0FD /* Pods-DhallApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FF059C4C23063D430064CA38 = {
 			isa = PBXGroup;
 			children = (
 				FF059C5723063D430064CA38 /* DhallApp */,
 				FF059C5623063D430064CA38 /* Products */,
+				701F0DC27316E01F25D70EDE /* Pods */,
+				25C13F94CA8B903938750859 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF059C6723063D430064CA38 /* Build configuration list for PBXNativeTarget "DhallApp" */;
 			buildPhases = (
+				2ECB2FC51A48EC4E51EFBD7A /* [CP] Check Pods Manifest.lock */,
 				FF059C5123063D430064CA38 /* Sources */,
 				FF059C5223063D430064CA38 /* Frameworks */,
 				FF059C5323063D430064CA38 /* Resources */,
+				D1ACA0BF7656514FC938BB77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ECB2FC51A48EC4E51EFBD7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DhallApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1ACA0BF7656514FC938BB77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DhallApp/Pods-DhallApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DhallApp/Pods-DhallApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DhallApp/Pods-DhallApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF059C5123063D430064CA38 /* Sources */ = {
@@ -284,6 +353,7 @@
 		};
 		FF059C6823063D430064CA38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83C19A52EDCAC6035C9C3B03 /* Pods-DhallApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +372,7 @@
 		};
 		FF059C6923063D430064CA38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D569AC53A85F8F10B9D0FD /* Pods-DhallApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
