@@ -25,7 +25,13 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(url)
-        let urlPage = URL(string: url)!
+        guard let urlPage = URL(string: url) else {
+            let alert = UIAlertController(title: "Error",
+                                          message: "URL invalid",
+                                          preferredStyle: .alert)
+            present(alert, animated: true, completion:nil)
+            return
+        }
         webView.load(URLRequest(url: urlPage))
         
         webView.allowsBackForwardNavigationGestures = true
