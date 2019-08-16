@@ -11,6 +11,7 @@ import WebKit
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     
+  
     @IBOutlet var webView: WKWebView!
     
     var url = "https://www.skidmore.edu"
