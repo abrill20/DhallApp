@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import MapKit
 import SwiftSoup
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController {
 
     
     var document: Document = Document.init("")
@@ -36,11 +35,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
     }
     
-    func fetchURLs() -> [String]? {
+    func fetchURLs() {
         
         guard let url = URL(string: "https://www.skidmore.edu/diningservice/menus/index.php" ) else {
             // an error occurred TODO: show alert
-            return nil
+            return
         }
         
         do {
@@ -52,9 +51,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
             parse()
         } catch let error {
             // an error occurred
-            return nil
+            return
         }
-        return nil
+        return
     }
     
     

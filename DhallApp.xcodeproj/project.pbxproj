@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		FF059C6023063D430064CA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF059C5F23063D430064CA38 /* Assets.xcassets */; };
 		FF059C6323063D430064CA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF059C6123063D430064CA38 /* LaunchScreen.storyboard */; };
 		FF059C6B23063E9F0064CA38 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C6A23063E9F0064CA38 /* WebViewController.swift */; };
+		FF059C6D2306539F0064CA38 /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C6C2306539F0064CA38 /* TableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FF059C6223063D430064CA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF059C6423063D430064CA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF059C6A23063E9F0064CA38 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		FF059C6C2306539F0064CA38 /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,6 @@
 				83C19A52EDCAC6035C9C3B03 /* Pods-DhallApp.debug.xcconfig */,
 				F4D569AC53A85F8F10B9D0FD /* Pods-DhallApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -84,6 +85,7 @@
 				FF059C5823063D430064CA38 /* AppDelegate.swift */,
 				FF059C5A23063D430064CA38 /* ViewController.swift */,
 				FF059C5C23063D430064CA38 /* Main.storyboard */,
+				FF059C6C2306539F0064CA38 /* TableTableViewController.swift */,
 				FF059C6A23063E9F0064CA38 /* WebViewController.swift */,
 				FF059C5F23063D430064CA38 /* Assets.xcassets */,
 				FF059C6123063D430064CA38 /* LaunchScreen.storyboard */,
@@ -207,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF059C6D2306539F0064CA38 /* TableTableViewController.swift in Sources */,
 				FF059C5B23063D430064CA38 /* ViewController.swift in Sources */,
 				FF059C6B23063E9F0064CA38 /* WebViewController.swift in Sources */,
 				FF059C5923063D430064CA38 /* AppDelegate.swift in Sources */,
