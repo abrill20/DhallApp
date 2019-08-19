@@ -40,6 +40,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
             vc.url = getURL(row: indexPath.row)
+            vc.menuTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text ?? "Menu"
             
             navigationController?.pushViewController(vc, animated: true)
         }

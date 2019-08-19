@@ -15,6 +15,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var webView: WKWebView!
     
     var url = "https://www.skidmore.edu"
+    var menuTitle = String()
     
     override func loadView() {
         webView = WKWebView()
@@ -35,6 +36,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: urlPage))
         
         webView.allowsBackForwardNavigationGestures = true
+        self.title = menuTitle
         
     }
     

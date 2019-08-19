@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MealsViewController: UITableViewController {
     
@@ -16,11 +17,19 @@ class MealsViewController: UITableViewController {
         super.viewDidLoad()
 
         var foods = [Food]()
-        foods.append(Food(name: "Lasagna", station: .diner))
-        foods.append(Food(name: "Chicken", station: .diner))
-        foods.append(Food(name: "Salad", station: .emilysGarden))
-        foods.append(Food(name: "Eggpland", station: .emilysGarden))
-        meals.append(Meal(name: "Test Lunch", foods: foods))
+        
+        let ref = Database.database().reference()
+        
+        ref.child("testLunch").observeSingleEvent(of: .value) { (snapshot) in
+            if let mealDict = snapshot.value as? NSDictionary {
+                for key in mealDict.allKeys {
+                    let meal = mealDict.value(forKey: key as! String) as! NSDictionary
+                    foods.append(Food(name: meal.value(forKey: "name") as! String, station: Food.Station.emilysGarden))
+                }
+                self.meals.append(Meal(name: "Test Lunch", foods: foods))
+                self.tableView.reloadData()
+            }
+        }
         
         
     }
