@@ -21,7 +21,7 @@ class MenuTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let correctStation = foods.filter { (food: Food) in
-            return food.station.rawValue == section      }
+            return food.station?.rawValue == section      }
         print("Number of sections: \(correctStation.count)" )
         return correctStation.count
     }
@@ -31,7 +31,7 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Food", for: indexPath)
         
         let correctStation = foods.filter { (food: Food) in
-            return food.station.rawValue == indexPath.section
+            return food.station?.rawValue == indexPath.section
         }
         
         cell.textLabel?.text = correctStation[indexPath.row].name

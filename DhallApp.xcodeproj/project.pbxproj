@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B81B098E2D26EF784CCD88CA /* Pods_DhallApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F47F65F4D3A1F5B8120A90 /* Pods_DhallApp.framework */; };
 		FF059C5923063D430064CA38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C5823063D430064CA38 /* AppDelegate.swift */; };
-		FF059C5B23063D430064CA38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C5A23063D430064CA38 /* ViewController.swift */; };
 		FF059C5E23063D430064CA38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF059C5C23063D430064CA38 /* Main.storyboard */; };
 		FF059C6023063D430064CA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF059C5F23063D430064CA38 /* Assets.xcassets */; };
 		FF059C6323063D430064CA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF059C6123063D430064CA38 /* LaunchScreen.storyboard */; };
@@ -28,7 +27,6 @@
 		F4D569AC53A85F8F10B9D0FD /* Pods-DhallApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DhallApp.release.xcconfig"; path = "Target Support Files/Pods-DhallApp/Pods-DhallApp.release.xcconfig"; sourceTree = "<group>"; };
 		FF059C5523063D430064CA38 /* DhallApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhallApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF059C5823063D430064CA38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF059C5A23063D430064CA38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF059C5D23063D430064CA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF059C5F23063D430064CA38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF059C6223063D430064CA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			children = (
 				FF059C5823063D430064CA38 /* AppDelegate.swift */,
 				FF059C5C23063D430064CA38 /* Main.storyboard */,
-				FF059C5A23063D430064CA38 /* ViewController.swift */,
 				FF059C6C2306539F0064CA38 /* TableViewController.swift */,
 				FF689563230A23E90006F47B /* MealsViewController.swift */,
 				FF689567230A29930006F47B /* MenuTableViewController.swift */,
@@ -227,7 +224,6 @@
 			files = (
 				FF3419A72308509700EBA72B /* Meal.swift in Sources */,
 				FF059C6D2306539F0064CA38 /* TableViewController.swift in Sources */,
-				FF059C5B23063D430064CA38 /* ViewController.swift in Sources */,
 				FF689564230A23E90006F47B /* MealsViewController.swift in Sources */,
 				FF689568230A29930006F47B /* MenuTableViewController.swift in Sources */,
 				FF059C6B23063E9F0064CA38 /* WebViewController.swift in Sources */,

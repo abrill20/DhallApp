@@ -23,8 +23,17 @@ class MealsViewController: UITableViewController {
         ref.child("testLunch").observeSingleEvent(of: .value) { (snapshot) in
             if let mealDict = snapshot.value as? NSDictionary {
                 for key in mealDict.allKeys {
-                    let meal = mealDict.value(forKey: key as! String) as! NSDictionary
-                    foods.append(Food(name: meal.value(forKey: "name") as! String, station: Food.Station.emilysGarden))
+                    let food = mealDict.value(forKey: key as! String) as! NSDictionary
+                    let stationName = food.value(forKey: "station") as! String
+                    var station = Food.Station.emilysGarden
+                    switch stationName {
+                    case "emily": station = Food.Station.emilysGarden
+                    case "diner": station = Food.Station.diner
+                    default: break
+                    }
+                    let foodName = food.value(forKey: "name") as! String
+                    
+                    foods.append(Food(name: foodName, station: station))
                 }
                 self.meals.append(Meal(name: "Test Lunch", foods: foods))
                 self.tableView.reloadData()
