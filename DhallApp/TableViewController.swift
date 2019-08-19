@@ -9,7 +9,7 @@
 import UIKit
 import SwiftSoup
 
-class TableTableViewController: UITableViewController {
+class TableViewController: UITableViewController {
 
     var document: Document = Document.init("")
     

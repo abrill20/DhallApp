@@ -14,7 +14,11 @@
 		FF059C6023063D430064CA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF059C5F23063D430064CA38 /* Assets.xcassets */; };
 		FF059C6323063D430064CA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF059C6123063D430064CA38 /* LaunchScreen.storyboard */; };
 		FF059C6B23063E9F0064CA38 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C6A23063E9F0064CA38 /* WebViewController.swift */; };
-		FF059C6D2306539F0064CA38 /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C6C2306539F0064CA38 /* TableTableViewController.swift */; };
+		FF059C6D2306539F0064CA38 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF059C6C2306539F0064CA38 /* TableViewController.swift */; };
+		FF3419A72308509700EBA72B /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3419A62308509700EBA72B /* Meal.swift */; };
+		FF3419A923085B2100EBA72B /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3419A823085B2100EBA72B /* Food.swift */; };
+		FF689564230A23E90006F47B /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF689563230A23E90006F47B /* MealsViewController.swift */; };
+		FF689568230A29930006F47B /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF689567230A29930006F47B /* MenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +33,11 @@
 		FF059C6223063D430064CA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF059C6423063D430064CA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF059C6A23063E9F0064CA38 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		FF059C6C2306539F0064CA38 /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
+		FF059C6C2306539F0064CA38 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		FF3419A62308509700EBA72B /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		FF3419A823085B2100EBA72B /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		FF689563230A23E90006F47B /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
+		FF689567230A29930006F47B /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = /Users/aaronbrill/Developer/DhallApp/DhallApp/MenuTableViewController.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +92,12 @@
 			children = (
 				FF059C5823063D430064CA38 /* AppDelegate.swift */,
 				FF059C5A23063D430064CA38 /* ViewController.swift */,
+				FF3419A62308509700EBA72B /* Meal.swift */,
+				FF3419A823085B2100EBA72B /* Food.swift */,
 				FF059C5C23063D430064CA38 /* Main.storyboard */,
-				FF059C6C2306539F0064CA38 /* TableTableViewController.swift */,
+				FF059C6C2306539F0064CA38 /* TableViewController.swift */,
+				FF689563230A23E90006F47B /* MealsViewController.swift */,
+				FF689567230A29930006F47B /* MenuTableViewController.swift */,
 				FF059C6A23063E9F0064CA38 /* WebViewController.swift */,
 				FF059C5F23063D430064CA38 /* Assets.xcassets */,
 				FF059C6123063D430064CA38 /* LaunchScreen.storyboard */,
@@ -209,10 +221,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF059C6D2306539F0064CA38 /* TableTableViewController.swift in Sources */,
+				FF3419A72308509700EBA72B /* Meal.swift in Sources */,
+				FF059C6D2306539F0064CA38 /* TableViewController.swift in Sources */,
 				FF059C5B23063D430064CA38 /* ViewController.swift in Sources */,
+				FF689564230A23E90006F47B /* MealsViewController.swift in Sources */,
+				FF689568230A29930006F47B /* MenuTableViewController.swift in Sources */,
 				FF059C6B23063E9F0064CA38 /* WebViewController.swift in Sources */,
 				FF059C5923063D430064CA38 /* AppDelegate.swift in Sources */,
+				FF3419A923085B2100EBA72B /* Food.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

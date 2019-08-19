@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/aaronbrill/Developer/DhallApp/DhallApp/MenuTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:DhallApp.xcodeproj">
    </FileRef>
    <FileRef
