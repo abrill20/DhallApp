@@ -12,13 +12,15 @@ import FirebaseDatabase
 class MealsViewController: UITableViewController {
     
     var meals = [Meal]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ref = Database.database().reference()
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshMealsData(_:)), for: .valueChanged)
         
-        fetchMeals(withReference: ref)
+        fetchMeals(withReference: Database.database().reference())
         
         
     }
@@ -50,9 +52,13 @@ class MealsViewController: UITableViewController {
         
     }
     
+    @objc func refreshMealsData(_ sender: Any) {
+        fetchMeals(withReference: Database.database().reference())
+    }
+    
     func fetchMeals(withReference ref: DatabaseReference) {
         ref.child("meals").observeSingleEvent(of: .value) { (snapshot) in
-            
+            self.meals = [Meal]()
             if let mealDict = snapshot.value as? NSDictionary {
                 for case let (_, mealValue as NSDictionary) in mealDict {
                     var foods = [Food]()
@@ -67,6 +73,7 @@ class MealsViewController: UITableViewController {
                     
                 }
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }

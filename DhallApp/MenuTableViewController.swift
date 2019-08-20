@@ -22,7 +22,6 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let correctStation = foods.filter { (food: Food) in
             return food.station?.rawValue == section      }
-        print("Number of sections: \(correctStation.count)" )
         return correctStation.count
     }
 
