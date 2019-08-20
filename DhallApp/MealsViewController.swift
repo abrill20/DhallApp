@@ -15,30 +15,10 @@ class MealsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var foods = [Food]()
         
         let ref = Database.database().reference()
         
-        ref.child("testLunch").observeSingleEvent(of: .value) { (snapshot) in
-            if let mealDict = snapshot.value as? NSDictionary {
-                for key in mealDict.allKeys {
-                    let food = mealDict.value(forKey: key as! String) as! NSDictionary
-                    let stationName = food.value(forKey: "station") as! String
-                    var station = Food.Station.emilysGarden
-                    switch stationName {
-                    case "emily": station = Food.Station.emilysGarden
-                    case "diner": station = Food.Station.diner
-                    default: break
-                    }
-                    let foodName = food.value(forKey: "name") as! String
-                    
-                    foods.append(Food(name: foodName, station: station))
-                }
-                self.meals.append(Meal(name: "Test Lunch", foods: foods))
-                self.tableView.reloadData()
-            }
-        }
+        fetchMeals(withReference: ref)
         
         
     }
@@ -68,6 +48,27 @@ class MealsViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
         
+    }
+    
+    func fetchMeals(withReference ref: DatabaseReference) {
+        ref.child("meals").observeSingleEvent(of: .value) { (snapshot) in
+            
+            if let mealDict = snapshot.value as? NSDictionary {
+                for case let (_, mealValue as NSDictionary) in mealDict {
+                    var foods = [Food]()
+                    let mealName = mealValue.value(forKey: "name") as! String
+                    let foodsKey = mealValue.value(forKey: "foods") as! NSDictionary
+                    for case let (_, foodValue as NSDictionary) in foodsKey {
+                        let food = foodValue.value(forKey: "name") as! String
+                        let station = foodValue.value(forKey: "station") as! String
+                        foods.append(Food(name: food, station: station))
+                    }
+                    self.meals.append(Meal(name: mealName, foods: foods))
+                    
+                }
+                self.tableView.reloadData()
+            }
+        }
     }
     
     
