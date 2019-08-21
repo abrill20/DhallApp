@@ -12,14 +12,12 @@ import SwiftSoup
 class TableViewController: UITableViewController {
 
     var document: Document = Document.init("")
-    
     var urls: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchURLs()
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,9 +27,6 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Menu", for: indexPath)
         let urlString = parseString(str: urls[indexPath.row])
-        
-        
-        
         
         cell.textLabel?.text = urlString
         return cell
@@ -44,15 +39,13 @@ class TableViewController: UITableViewController {
             
             navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
-    
-    
     func fetchURLs() {
-        
         guard let url = URL(string: "https://www.skidmore.edu/diningservice/menus/index.php" ) else {
-            // an error occurred TODO: show alert
+            let ac = UIAlertController(title: "Error", message: "Content not found", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(ac, animated: true)
             return
         }
         
@@ -63,8 +56,10 @@ class TableViewController: UITableViewController {
             document = try SwiftSoup.parse(html)
             // parse css query
             parse()
-        } catch let _ {
-            // an error occurred
+        } catch {
+            let ac = UIAlertController(title: "Error", message: "Unable to parse dining hall web page", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(ac, animated: true)
             return
         }
         return
@@ -73,7 +68,7 @@ class TableViewController: UITableViewController {
     
     func parse() {
         do {
-            // firn css selector
+            // css selector
             let elements: Elements = try document.select("a")
             //transform it into a local object (Item)
             for element in elements {
@@ -82,12 +77,9 @@ class TableViewController: UITableViewController {
                     let html = try element.outerHtml()
                     urls.append(html)
                 }
-                
-                
             }
-            
-        } catch let _ {
-            return
+        } catch {
+            print(error)
         }
     }
     

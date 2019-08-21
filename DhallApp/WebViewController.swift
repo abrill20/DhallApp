@@ -36,6 +36,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: urlPage))
         
         webView.allowsBackForwardNavigationGestures = true
+        
         self.title = menuTitle
         
     }
