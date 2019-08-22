@@ -11,10 +11,12 @@ import Foundation
 struct Meal {
     var name: String
     var foods: [Food]
+    var date: Date
     
-    init(name: String, foods: [Food]) {
+    init(name: String, foods: [Food], date: Date) {
         self.name = name
         self.foods = foods
+        self.date = date
     }
     
 }

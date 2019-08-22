@@ -21,19 +21,17 @@ class MealsViewController: UITableViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(refreshMealsData(_:)), for: .valueChanged)
         
         fetchMeals(withReference: Database.database().reference())
-        
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Meal", for: indexPath)
         let meal = meals[indexPath.row]
-        cell.textLabel?.text = meal.name
+        let dateArr = meal.date.description.split(separator: " ")
+        cell.textLabel?.text = "\(meal.name) \(dateArr[0])"
         return cell
     }
     
@@ -53,27 +51,29 @@ class MealsViewController: UITableViewController {
     }
     
     func fetchMeals(withReference ref: DatabaseReference) {
-        ref.child("meals").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("dhall").observeSingleEvent(of: .value) { (snapshot) in
             self.meals = [Meal]()
-            if let mealDict = snapshot.value as? NSDictionary {
-                for case let (_, mealValue as NSDictionary) in mealDict {
-                    var foods = [Food]()
-                    let mealName = mealValue.value(forKey: "name") as! String
-                    let foodsKey = mealValue.value(forKey: "foods") as! NSDictionary
-                    for case let (_, foodValue as NSDictionary) in foodsKey {
-                        let food = foodValue.value(forKey: "name") as! String
-                        let station = foodValue.value(forKey: "station") as! String
-                        foods.append(Food(name: food, station: station))
+            if let dhallDict = snapshot.value as? NSDictionary {
+                let allFoods = dhallDict.value(forKey: "foods") as! NSDictionary
+                let meals = dhallDict.value(forKey: "meals") as! NSDictionary
+                
+                for case let (date as String, value as NSDictionary) in meals {
+                    for case let (meal, foods as [String]) in value {
+                        var mealFoods = [Food]()
+                        for food in foods {
+                            let foodItem = allFoods.value(forKey: food) as! NSDictionary
+                            print(foodItem)
+                            mealFoods.append(Food(name: foodItem.value(forKey: "name") as! String, station: foodItem.value(forKey: "station") as! String, description: foodItem.value(forKey: "description") as! String))
+                        }
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy-MM-dd"
+                        self.meals.append(Meal(name: meal as! String, foods: mealFoods, date: formatter.date(from: date) ?? Date()))
                     }
-                    self.meals.append(Meal(name: mealName, foods: foods))
-                    
                 }
+                
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
         }
     }
-    
-    
-
 }

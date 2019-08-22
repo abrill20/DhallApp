@@ -76,6 +76,28 @@ class MenuTableViewController: UITableViewController, UISearchResultsUpdating {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var item: Food
+        if(resultSearchController.isActive) {
+            let correctStation = filteredTableFoods.filter { (food: Food) in
+                return food.station?.rawValue == indexPath.section
+            }
+            item = correctStation[indexPath.row]
+        } else {
+            let correctStation = foods.filter { (food: Food) in
+                return food.station?.rawValue == indexPath.section
+            }
+            item = correctStation[indexPath.row]
+        }
+        
+        let ac = UIAlertController(title: item.name, message: item.description, preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        present(ac, animated: true)
+        
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
