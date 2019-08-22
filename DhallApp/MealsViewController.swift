@@ -62,7 +62,6 @@ class MealsViewController: UITableViewController {
                         var mealFoods = [Food]()
                         for food in foods {
                             let foodItem = allFoods.value(forKey: food) as! NSDictionary
-                            print(foodItem)
                             mealFoods.append(Food(name: foodItem.value(forKey: "name") as! String, station: foodItem.value(forKey: "station") as! String, description: foodItem.value(forKey: "description") as! String))
                         }
                         let formatter = DateFormatter()
