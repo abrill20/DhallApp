@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        var date = datePicker.date
-        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "MealsViewController") as? MealsViewController {
+            vc.date = datePicker.date
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ import FirebaseDatabase
 class MealsViewController: UITableViewController {
     
     var meals = [Meal]()
+    var date: Date?
     
 
     override func viewDidLoad() {
@@ -37,8 +38,6 @@ class MealsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "MenuTableViewController") as? MenuTableViewController {
-            // TODO: Make Menu View conttroller
-            
             vc.foods = meals[indexPath.row].foods
 
             navigationController?.pushViewController(vc, animated: true)
@@ -56,9 +55,9 @@ class MealsViewController: UITableViewController {
             if let dhallDict = snapshot.value as? NSDictionary {
                 let allFoods = dhallDict.value(forKey: "foods") as! NSDictionary
                 let meals = dhallDict.value(forKey: "meals") as! NSDictionary
-                
-                for case let (date as String, value as NSDictionary) in meals {
-                    for case let (meal, foods as [String]) in value {
+                if let selectedDate = self.date {
+                    let selectedMeal = meals.value(forKey: String(selectedDate.description.split(separator: " ")[0])) as! NSDictionary
+                    for case let (meal, foods as [String]) in selectedMeal {
                         var mealFoods = [Food]()
                         for food in foods {
                             let foodItem = allFoods.value(forKey: food) as! NSDictionary
@@ -66,7 +65,20 @@ class MealsViewController: UITableViewController {
                         }
                         let formatter = DateFormatter()
                         formatter.dateFormat = "yyyy-MM-dd"
-                        self.meals.append(Meal(name: meal as! String, foods: mealFoods, date: formatter.date(from: date) ?? Date()))
+                        self.meals.append(Meal(name: meal as! String, foods: mealFoods, date: selectedDate))
+                    }
+                } else {
+                    for case let (date as String, value as NSDictionary) in meals {
+                        for case let (meal, foods as [String]) in value {
+                            var mealFoods = [Food]()
+                            for food in foods {
+                                let foodItem = allFoods.value(forKey: food) as! NSDictionary
+                                mealFoods.append(Food(name: foodItem.value(forKey: "name") as! String, station: foodItem.value(forKey: "station") as! String, description: foodItem.value(forKey: "description") as! String))
+                            }
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyy-MM-dd"
+                            self.meals.append(Meal(name: meal as! String, foods: mealFoods, date: formatter.date(from: date) ?? Date()))
+                        }
                     }
                 }
                 
