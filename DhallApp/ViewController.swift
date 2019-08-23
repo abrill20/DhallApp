@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "MealsViewController") as? MealsViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "LD") as? LunchDinnerViewController {
             
             vc.date = datePicker.date - (60*60*4)
             navigationController?.pushViewController(vc, animated: true)
@@ -22,24 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
-extension Date {
-    var localizedDescription: String {
-        return description(with: .current)
-    }
-}
+
