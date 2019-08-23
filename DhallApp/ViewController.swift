@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "MealsViewController") as? MealsViewController {
-            vc.date = datePicker.date
             
+            vc.date = datePicker.date - (60*60*4)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -37,4 +37,9 @@ class ViewController: UIViewController {
     }
     */
 
+}
+extension Date {
+    var localizedDescription: String {
+        return description(with: .current)
+    }
 }

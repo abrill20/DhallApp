@@ -56,7 +56,12 @@ class MealsViewController: UITableViewController {
                 let allFoods = dhallDict.value(forKey: "foods") as! NSDictionary
                 let meals = dhallDict.value(forKey: "meals") as! NSDictionary
                 if let selectedDate = self.date {
-                    let selectedMeal = meals.value(forKey: String(selectedDate.description.split(separator: " ")[0])) as! NSDictionary
+                    guard let selectedMeal = meals.value(forKey: String(selectedDate.description.split(separator: " ")[0])) as? NSDictionary else {
+                        let ac = UIAlertController(title: "Error", message: "No menu found for date \(String(describing: self.date?.description))", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(ac, animated: true)
+                        return
+                    }
                     for case let (meal, foods as [String]) in selectedMeal {
                         var mealFoods = [Food]()
                         for food in foods {
